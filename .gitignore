@@ -1,0 +1,11 @@
+.idea
+.venv
+lyrics-data
+MoodyLyrics
+not_founds.txt
+.env
+lyrics.csv
+uv.lock
+.python-version
+logs.txt
+**/__pycache__
