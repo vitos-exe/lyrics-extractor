@@ -1,0 +1,28 @@
+[project]
+name = "lyrics-extractor"
+version = "1.0.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = "==3.13.3"
+dependencies = [
+    "joblib",
+    "kagglehub",
+    "lyricsgenius",
+    "matplotlib",
+    "notebook",
+    "openpyxl",
+    "pandas",
+    "pathlib",
+    "python-dotenv",
+    "requests",
+    "spotify-lyrics-scraper",
+    "spotipy",
+    "tqdm",
+]
+
+[dependency-groups]
+dev = [
+    "ipdb",
+    "ipython",
+    "pytest",
+]

@@ -1,0 +1,38 @@
+name: Python CI
+
+on:
+  if: false
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.13'
+
+    - name: Install the latest version of uv
+      uses: astral-sh/setup-uv@v5
+
+    - name: Install dependencies using uv
+      run: |
+        uv sync
+
+    - name: Activate virtual environment
+      run: |
+        source .venv/bin/activate
+
+    - name: Run tests with pytest
+      run: |
+        .venv/bin/pytest
