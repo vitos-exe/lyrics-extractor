@@ -1,5 +1,6 @@
-import pandas as pd
 from time import sleep
+
+import pandas as pd
 
 from .. import dataset, lyrics
 

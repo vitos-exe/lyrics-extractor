@@ -1,5 +1,6 @@
-from dotenv import load_dotenv
 import argparse
+
+from dotenv import load_dotenv
 
 from .entrypoints import ENTRYPOINTS
 
