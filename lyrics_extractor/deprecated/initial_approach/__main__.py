@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 from .entrypoints import ENTRYPOINTS
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     load_dotenv()
 
     parser = argparse.ArgumentParser()

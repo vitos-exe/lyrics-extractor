@@ -8,7 +8,7 @@ from . import constants
 
 
 def download_moody_lyrics():
-    print('Downloading MoodyLyrics dataset')
+    print("Downloading MoodyLyrics dataset")
     response = requests.get(constants.MOODY_LYRICS_DOWNLOAD_URL)
     file_name = f"{constants.MOODY_LYRICS_PATH}.zip"
     with open(file_name, "wb") as file:
@@ -18,8 +18,20 @@ def download_moody_lyrics():
 
 
 def cleanup_moody_lyrics(df):
-    return df.iloc[15:, 1:].reset_index().drop('index', axis=1).rename(
-        {'Unnamed: 1': 'artist', 'Unnamed: 2': 'title', 'Unnamed: 3': 'label'}, axis=1)
+    correctly_formatted = (
+        df.iloc[15:, 1:]
+        .reset_index()
+        .drop("index", axis=1)
+        .rename(
+            {"Unnamed: 1": "artist", "Unnamed: 2": "title", "Unnamed: 3": "label"},
+            axis=1,
+        )
+    )
+
+    correctly_formatted["artist"] = correctly_formatted["artist"].str.strip()
+    correctly_formatted["title"] = correctly_formatted["title"].str.strip()
+
+    return correctly_formatted
 
 
 def get_moody_lyrics(version):

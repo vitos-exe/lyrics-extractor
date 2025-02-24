@@ -28,14 +28,10 @@ def download_nju_music_mood():
 
 def get_song_infos(root_directory):
     with open(root_directory / "info.txt", encoding="ISO-8859-1") as file:
-        lines = file.readlines()
-    song_info_lists = list(
-        filter(
-            lambda l: len(l) == 3,
-            [line.split(":")[:-1] for line in lines],
+        song_info_lists = filter(
+            lambda l: len(l) == 3, map(lambda l: l.split(":")[:-1], file.readlines())
         )
-    )
-    return {n: (t, a) for n, t, a in song_info_lists}
+    return {n: (t.strip(), a.strip()) for n, t, a in song_info_lists}
 
 
 def get_songs_from_txts(root_directory, song_infos):
@@ -55,7 +51,7 @@ def get_songs_from_txts(root_directory, song_infos):
             "title": title,
             "artist": artist,
             "lyrics": lyrics,
-            "label": label.lower(),
+            "label": label,
         }
 
 
@@ -63,7 +59,9 @@ def get_nju_music_mood():
     if not os.path.exists(constants.NJU_MUSIC_MOOD_PATH):
         download_nju_music_mood()
 
-    label_pathes = [path for path in Path(constants.NJU_MUSIC_MOOD_PATH).glob("*") if path.is_dir()]
+    label_pathes = [
+        path for path in Path(constants.NJU_MUSIC_MOOD_PATH).glob("*") if path.is_dir()
+    ]
 
     all_songs = []
     for lp, phase in product(label_pathes, ["Train", "Test"]):
