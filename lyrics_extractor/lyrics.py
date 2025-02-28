@@ -1,5 +1,6 @@
 import lyricsgenius
 import requests
+from ratelimit import rate_limited, sleep_and_retry
 
 from . import constants, util
 from .util import with_stdout_redirect
@@ -16,13 +17,14 @@ def get_lyrics_genius(genius, artist, title):
     return genius_song.lyrics
 
 
-@util.fail_retry()
+@sleep_and_retry
+@rate_limited(calls=15, period=10)
 def get_lyrics_ovh(artist, title):
     response = requests.get(f"{constants.OVH_URL}/{artist}/{title}")
     if response.status_code == 200:
         return response.json()["lyrics"]
     elif response.status_code == 404:
-        return None
+        return 'ERROR'
     else:
         raise Exception(f"Lyrics API returned {response.status_code}")
 

@@ -27,7 +27,7 @@ def download_nju_music_mood():
 
 
 def get_song_infos(root_directory):
-    with open(root_directory / "info.txt", encoding="ISO-8859-1") as file:
+    with open(root_directory / "info.txt", encoding="latin-1") as file:
         song_info_lists = filter(
             lambda l: len(l) == 3, map(lambda l: l.split(":")[:-1], file.readlines())
         )
@@ -44,7 +44,7 @@ def get_songs_from_txts(root_directory, song_infos):
         if number not in song_infos:
             continue
         title, artist = song_infos[number]
-        with open(txt, encoding="ISO-8859-1") as file:
+        with open(txt, encoding="latin-1") as file:
             lyrics = file.read()
 
         yield {

@@ -1,28 +1,29 @@
 [project]
-name = "old-extractor"
-version = "0.1.0"
+name = "lyrics-extractor"
+version = "1.0.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = "==3.9.6"
 dependencies = [
-    "joblib>=1.4.2",
-    "kagglehub>=0.3.7",
-    "lyricsgenius>=3.2.0",
-    "matplotlib>=3.10.0",
-    "notebook>=7.3.2",
-    "openpyxl>=3.1.5",
-    "pandas>=2.2.3",
-    "pathlib>=1.0.1",
-    "python-dotenv>=1.0.1",
-    "requests>=2.32.3",
-    "spotify-lyrics-scraper>=1.2.2",
-    "spotipy>=2.25.0",
-    "tqdm>=4.67.1",
+    "joblib",
+    "kagglehub",
+    "lyricsgenius",
+    "matplotlib",
+    "notebook",
+    "openpyxl",
+    "pandas",
+    "pathlib",
+    "python-dotenv",
+    "ratelimit",
+    "requests",
+    "spotify-lyrics-scraper",
+    "spotipy",
+    "tqdm",
 ]
 
 [dependency-groups]
 dev = [
-    "ipdb>=0.13.13",
-    "ipython>=8.32.0",
-    "pytest>=8.3.4",
+    "ipdb",
+    "ipython",
+    "pytest",
 ]

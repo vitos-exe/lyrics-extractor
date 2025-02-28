@@ -28,8 +28,8 @@ def cleanup_moody_lyrics(df):
         )
     )
 
-    correctly_formatted["artist"] = correctly_formatted["artist"].str.strip()
-    correctly_formatted["title"] = correctly_formatted["title"].str.strip()
+    for col in ["artist", "title"]:
+        correctly_formatted[col] = correctly_formatted[col].str.strip()
 
     return correctly_formatted
 
